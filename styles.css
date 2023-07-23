@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --normal-key-color: grey;
+  --edit-key-color: green;
+  --disabled-key-color: red;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.text-box {
+  flex: 1;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 2vw; /* Using relative unit vw (viewport width) */
+  line-height: 3em; /* Adjust the line height to make it approximately 3 lines tall */
+  overflow-y: auto;
+}
+
+#keyboard {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+}
+
+.key-row {
+  display: flex;
+  justify-content: center;
+  gap: 2vw; /* Using relative unit vw (viewport width) */
+  flex: 1; /* Equal height for all rows */
+}
+
+.key,
+.special-key {
+  flex: 1; /* Let keys scale equally within the row */
+  font-size: 2vw; /* Using relative unit vw (viewport width) */
+  background-color: var(--normal-key-color);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Adjust the aspect ratio for the special buttons */
+.special-key {
+  flex: 2; /* Make special buttons twice as wide as letter buttons */
+}
+
+.key span,
+.special-key span {
+  display: block;
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Adjust font size for special buttons to fit properly */
+.special-key span {
+  font-size: 1.2vw; /* Using relative unit vw (viewport width) */
+}
+
+/* The following style hides disabled keys by default */
+.key.disabled {
+  visibility: hidden;
+}
+
+/* The following style makes disabled keys visible in edit mode */
+body.edit-mode .key.disabled {
+  visibility: visible;
+}
+
+#text-display {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 2vw; /* Using relative unit vw (viewport width) */
+  font-size: 2vw; /* Using relative unit vw (viewport width) */
+  min-height: 6em; /* Using absolute height for approximately 3 lines tall */
+}
+
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 5px;
+  }
+  .text-box,
+  .key,
+  .special-key {
+    font-size: 4vw; /* Adjust font size for smaller screens */
+  }
+  .special-key {
+    font-size: 2.8vw; /* Adjust font size for smaller screens */
+  }
+}
